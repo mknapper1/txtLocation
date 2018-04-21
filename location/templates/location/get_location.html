@@ -14,9 +14,12 @@
 
 
 {% block main %}
-  <h1>GETTING LOCATION</h1>
+  <div class="text-center">
+    <h1>GETTING LOCATION</h1>
     <div id="loader_1" class="spinner"></div>
-  <h4>Approve the request to track your location</h4>
+    <h4>Approve Access To Your Location</h4>
+  </div>
+
   <div style="display:none;">
     <form action="." method="POST">
     {% csrf_token %}

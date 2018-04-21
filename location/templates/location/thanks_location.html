@@ -1,16 +1,96 @@
 {% extends 'base_dark.html' %}
 
 {% block title %}
-  Thanks!
+  In Safe Hands
 {% endblock title %}
+
+{% block extend_head %}
+  <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/css/main.css">
+
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 50%;
+      width: 100%;
+    }
+  </style>
+{% endblock extend_head %}
 
 
 {% block main %}
   <h1>Longitude {{ location.longitude }}</h1>
   <h1>Latitude {{ location.latitude }}</h1>
-  <strong>Thanks! Emergency Services Now Have Your Location</strong>
-  <iframe width="100%" height="450" frameborder="0" style="border:0"
-          src="https://www.google.com/maps/embed/v1/place?q={{ location.latitude }},{{ location.longitude }}&amp;key=AIzaSyCdWrdDiS7DCeer-8Apuo4d9eP0RQ6KpLc"></iframe>
+  <strong>Emergency Services Now Have Your Location</strong>
+{#  <iframe width="100%" height="450" frameborder="0" style="border:0"#}
+{#          src="https://www.google.com/maps/embed/v1/place?q={{ location.latitude }},{{ location.longitude }}&amp;key=AIzaSyCdWrdDiS7DCeer-8Apuo4d9eP0RQ6KpLc"></iframe>#}
 {% endblock main %}
+
+{% block no_containers %}
+<div id="viewDiv"></div>
+{% endblock no_containers %}
+
+
+{% block page_javascript %}
+  <script src="https://js.arcgis.com/4.7/"></script>
+  <script>
+    var esri_long = {{ location.longitude }};
+    var esri_lat = {{ location.latitude }};
+
+    function display_map() {
+      require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/Graphic",
+      "dojo/domReady!"
+    ], function(
+      Map, MapView, Graphic
+    ) {
+
+      var map = new Map({
+        basemap: "streets"
+      });
+
+      var view = new MapView({
+        center: [esri_long, esri_lat],
+        container: "viewDiv",
+        map: map,
+        zoom: 14
+      });
+
+      /*************************
+       * Create a point graphic
+       *************************/
+      var point = {
+        type: "point", // autocasts as new Point()
+        longitude: -86.008366,
+        latitude: 39.966847
+      };
+
+      // Create a symbol for drawing the point
+      var markerSymbol = {
+        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+        color: [226, 119, 40],
+        outline: { // autocasts as new SimpleLineSymbol()
+          color: [255, 255, 255],
+          width: 2
+        }
+      };
+
+      // Create a graphic and add the geometry and symbol to it
+      var pointGraphic = new Graphic({
+        geometry: point,
+        symbol: markerSymbol
+      });
+
+      // Add the graphics to the view's graphics layer
+      view.graphics.add(pointGraphic);
+    });
+    }
+  </script>
+
+{% endblock page_javascript %}
 
 
