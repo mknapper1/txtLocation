@@ -30,7 +30,7 @@ class Location(models.Model):
     def get_poll_url(self):
         return reverse('location:poll', args=[self.unique_link])
 
-    def request_location(self, absolute_uri):
+    def request_location(self, host):
         client = boto3.client(
             "sns",
             aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
@@ -40,7 +40,7 @@ class Location(models.Model):
 
         client.publish(
             PhoneNumber=self.phone,
-            Message=absolute_uri + reverse('location:poll', args=[self.unique_link])
+            Message=host + reverse('location:poll', args=[self.unique_link])
         )
 
         print('SEND TEXT TO: ' + self.phone)
