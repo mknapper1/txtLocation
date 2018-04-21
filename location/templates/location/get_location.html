@@ -14,12 +14,16 @@
 
 
 {% block main %}
-  <h1>GET LOCATION</h1>
-  <form action="." method="POST">
+  <h1>GETTING LOCATION</h1>
+    <div id="loader_1" class="spinner"></div>
+  <h4>Approve the request to track your location</h4>
+  <div style="display:none;">
+    <form action="." method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" value="Request Location">Send Location!</button>
+    <button id="btn_send_location" type="submit" value="Request Location">Send Location!</button>
   </form>
+  </div>
 {% endblock main %}
 
 
@@ -42,12 +46,13 @@
 
       function showPosition(position) {
         sendLocation(position);
-        alert("Latitude: " + position.coords.latitude + " | Longitude: " + position.coords.longitude);
+        {#alert("Latitude: " + position.coords.latitude + " | Longitude: " + position.coords.longitude);#}
       }
 
       function sendLocation(position) {
         $('#id_longitude').val(position.coords.longitude);
         $('#id_latitude').val(position.coords.latitude);
+        $('#btn_send_location').click();
       }
 
     $(function () {
