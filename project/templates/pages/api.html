@@ -9,14 +9,18 @@
   <div style="margin-top: 20%;">
     <h1>API</h1>
     <br>
-    <h4>Request A Location</h4>
-    <h4><code>http://google.com</code></h4>
-    <h4>Result</h4>
-    <h4><code>{}</code></h4>
+    <h3 class="mb-0">Request A Location</h3>
+    <code>POST http://txtLocation.herokuapp.com/location/API/request</code>
+    <code>data = {phone: 1234567890, key: abc}</code>
+    <h4 class="mt-3 mb-0">Result</h4>
+    <code>data = {locate: http://txtLocation.herokuapp.com/location/API/show/ef2c6008-4877-4c83-8558-bd6f78a10498/}</code>
     <br><br>
-    <h4>Get Found Location</h4>
-    <h4><code>http://google.com</code></h4>
-    <h4>Result</h4>
-    <h4><code>{}</code></h4>
+    <h3 class="mt-3 mb-0">Get Found Location</h3>
+    <code>POST http://txtLocation.herokuapp.com/location/API/show/ef2c6008-4877-4c83-8558-bd6f78a10498/</code>
+    <code>data = {key: abc}</code>
+    <h4 class="mt-3 mb-0">Results</h4>
+    <code>data = {status: 'not-found', longitude: 0.0, latitude: 0.0}</code>
+    <hr>
+    <code>data = {status: 'found', longitude: -86.0019415, latitude: 39.9637941}</code>
   </div>
 {% endblock main %}
