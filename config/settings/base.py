@@ -242,3 +242,6 @@ SOCIALACCOUNT_ADAPTER = 'project.users.adapters.SocialAccountAdapter'
 # AWS_ACCESS_KEY_ID_SNS = env('DJANGO_AWS_ACCESS_KEY_ID')
 # # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 # AWS_SECRET_ACCESS_KEY_SNS = env('DJANGO_AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = env('DJANGO_AWS_ACCESS_KEY_ID')
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_SECRET_ACCESS_KEY = env('DJANGO_AWS_SECRET_ACCESS_KEY')
