@@ -58,6 +58,7 @@ def request_location(request):
         if form.is_valid():
             cd = form.cleaned_data
             new_location = Location.create(phone=cd['number'])
+            new_location.request_location(request.build_absolute_uri())
             return redirect('location:show', unique_link=new_location.unique_link)
     form = PhoneForm()
     return render(request, 'location/request_location.html', {'form': form})
