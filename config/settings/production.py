@@ -104,6 +104,7 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 
 AWS_PRELOAD_METADATA = True
+INSTALLED_APPS = ['collectfast', 's3_folder_storage', ] + INSTALLED_APPS
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
