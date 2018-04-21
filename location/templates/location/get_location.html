@@ -1,4 +1,12 @@
 {% extends 'base_dark.html' %}
+{% load static i18n %}
+
+
+{% block extend_head %}
+<meta property="og:title" content="911 Location Request" />
+
+  <meta property="og:image" content="{% static 'images/911.png' %}" />
+{% endblock extend_head %}
 
 {% block title %}
   Request Location
