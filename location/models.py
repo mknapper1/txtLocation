@@ -40,7 +40,7 @@ class Location(models.Model):
 
         client.publish(
             PhoneNumber=self.phone,
-            Message=host + reverse('location:poll', args=[self.unique_link])
+            Message=host + reverse('location:get', args=[self.unique_link])
         )
 
         print('SEND TEXT TO: ' + self.phone)
