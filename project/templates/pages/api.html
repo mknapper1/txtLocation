@@ -5,22 +5,32 @@
 {% endblock title %}
 
 
-{% block main %}
-  <div style="margin-top: 20%;">
-    <h1>API</h1>
-    <br>
-    <h3 class="mb-0">Request A Location</h3>
-    <code>POST http://txtLocation.herokuapp.com/location/API/request</code>
-    <code>data = {phone: 1234567890, key: abc}</code>
-    <h4 class="mt-3 mb-0">Result</h4>
-    <code>data = {locate: http://txtLocation.herokuapp.com/location/API/show/ef2c6008-4877-4c83-8558-bd6f78a10498/}</code>
-    <br><br>
-    <h3 class="mt-3 mb-0">Get Found Location</h3>
-    <code>POST http://txtLocation.herokuapp.com/location/API/show/ef2c6008-4877-4c83-8558-bd6f78a10498/</code>
-    <code>data = {key: abc}</code>
-    <h4 class="mt-3 mb-0">Results</h4>
-    <code>data = {status: 'not-found', longitude: 0.0, latitude: 0.0}</code>
-    <hr>
-    <code>data = {status: 'found', longitude: -86.0019415, latitude: 39.9637941}</code>
+{% block no_containers %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mt-5 mx-auto">
+        <h1>API</h1>
+        <br>
+        <h3 class="mb-0">Request A Location</h3>
+        <code>POST http://txtLocation.herokuapp.com/location/API/request</code>
+        <br>
+        <code>data = {phone: 1234567890, key: abc}</code>
+        <h4 class="mt-3 mb-0">Result</h4>
+        <code>data = {locate:
+          http://txtLocation.herokuapp.com/location/API/show/ef2c6008-4877-4c83-8558-bd6f78a10498/}</code>
+        <br><br>
+        <h3 class="mt-3 mb-0">Get Found Location</h3>
+        <code>POST http://txtLocation.herokuapp.com/location/API/show/ef2c6008-4877-4c83-8558-bd6f78a10498/</code>
+        <br>
+        <code>data = {key: abc}</code>
+        <h4 class="mt-3 mb-0">Results</h4>
+        <code>data = {status: 'not-found', longitude: 0.0, latitude: 0.0}</code>
+        <br>
+        <code>data = {status: 'found', longitude: -86.0019415, latitude: 39.9637941}</code>
+      </div>
+
+    </div>
   </div>
-{% endblock main %}
+
+
+{% endblock no_containers %}

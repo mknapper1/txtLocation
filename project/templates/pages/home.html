@@ -6,17 +6,28 @@
 
 
 {% block main %}
-    <h3 >In an emergency,</h3>
-    <h3>every second matters.</h3>
+    <h4 >In an emergency,</h4>
+    <h4>every second matters.</h4>
     <br><br>
-    <h3>Emergencies don't have time to download</h3>
-    <h3><i class="text-danger">the next new app</i></h3>
+    <h4>Emergencies don't have time to download</h4>
+    <h4><i class="text-danger">the next new app</i></h4>
     <br><br>
-  <h3><span class="font-light">txt</span><span class="font-heavy">Location</span> is a 911 location tracker that is:</h3>
+  <h4><span class="font-light">txt</span><span class="font-heavy">Location</span> is a 911 location tracker that is:</h4>
     <ul style="list-style-type: none;">
-      <li><h4>_ Universal/Platform Independent</h4></li>
-      <li><h4>_ Installation Free</h4></li>
-      <li><h4>_ Usable in existing applications via our <a href="#">API</a></h4></li>
+      <li class="mb-3"><h5 class="mb-0">_ Universal/Platform Independent</h5>
+      <ul style="list-style-type: none;">
+        <li>iOS, Android, Windows Mobile</li>
+        <li>Windows, MacOS, ChromeOS, Linux, BSD</li>
+      </ul>
+      </li>
+      <li class="mb-3"><h5 class="mb-0">_ Installation Free</h5>
+         <ul style="list-style-type: none;">
+        <li>GrandParent Proof!</li>
+      </ul>
+      </li>
+      <li><h5>_ Usable in existing applications via our <a href="#">API</a></h5></li>
+      <li><h5>_ Offline with <a href="https://developer.mozilla.org/en-US/docs/Web/Manifest">App Manifest</a></h5></li>
+
     </ul>
     <h3><a href="{% url 'location:request' %}">Try It Out</a></h3>
 
