@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_dark.html' %}
+
+{% block title %}
+  Request Location
+{% endblock title %}
+
+
+{% block main %}
   <h1>GET LOCATION</h1>
-</body>
-</html>
+  <form action="." method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value="Request Location">Send Location!</button>
+  </form>
+{% endblock main %}
+
+
+{% block page_javascript %}
+  <script>
+
+   function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          var position = {
+            coords: {
+              latitude: 127.000,
+              longitude: 127.000
+            }
+          };
+          showPosition(position)
+        }
+      }
+
+      function showPosition(position) {
+        sendLocation(position);
+        alert("Latitude: " + position.coords.latitude + " | Longitude: " + position.coords.longitude);
+      }
+
+      function sendLocation(position) {
+        $('#id_longitude').val(position.coords.longitude);
+        $('#id_latitude').val(position.coords.latitude);
+      }
+
+    $(function () {
+      getLocation();
+    });
+
+  </script>
+{% endblock page_javascript %}

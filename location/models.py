@@ -1,6 +1,10 @@
 import uuid
 import boto3
+
+from django.conf import settings
 from django.db import models
+from django.urls import reverse
+
 
 from project.users.models import User
 
@@ -13,20 +17,32 @@ class Location(models.Model):
     latitude = models.DecimalField(max_digits=20, decimal_places=15, blank=True, null=True)
     found = models.DateTimeField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now=True)\
+
+
+    @classmethod
+    def create(cls, phone):
+        new_location = cls()
+        new_location.phone = phone
+        new_location.save()
+        new_location.request_location()
+        return new_location
+
+    def get_poll_url(self):
+        return reverse('location:poll', args=[self.unique_link])
 
     def request_location(self):
         client = boto3.client(
             "sns",
-            aws_access_key_id="your_access_key_id",
-            aws_secret_access_key="you_secret_access_key",
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID_SNS,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY_SNS,
             region_name="us-east-1"
         )
 
-        # client.publish(
-        #     PhoneNumber="your_phone_number",
-        #     Message="Hello World!"
-        # )
+        client.publish(
+            PhoneNumber=self.phone,
+            Message=reverse('location:poll', args=[self.unique_link])
+        )
 
         print('SEND TEXT TO: ' + self.phone)
         # Send Twillio Text Message
