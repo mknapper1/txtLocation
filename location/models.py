@@ -34,9 +34,9 @@ class Location(models.Model):
     def request_location(self):
         client = boto3.client(
             "sns",
-            aws_access_key_id=settings.AWS_ACCESS_KEY_ID_SNS,
-            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY_SNS,
-            region_name="us-east-1"
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+            # region_name="us-east-1"
         )
 
         client.publish(
