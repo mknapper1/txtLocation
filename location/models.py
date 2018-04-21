@@ -32,17 +32,17 @@ class Location(models.Model):
         return reverse('location:poll', args=[self.unique_link])
 
     def request_location(self):
-        client = boto3.client(
-            "sns",
-            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-            region_name="us-east-1"
-        )
-
-        client.publish(
-            PhoneNumber=self.phone,
-            Message=reverse('location:poll', args=[self.unique_link])
-        )
+        # client = boto3.client(
+        #     "sns",
+        #     aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+        #     aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+        #     region_name="us-east-1"
+        # )
+        #
+        # client.publish(
+        #     PhoneNumber=self.phone,
+        #     Message=reverse('location:poll', args=[self.unique_link])
+        # )
 
         print('SEND TEXT TO: ' + self.phone)
         # Send Twillio Text Message
