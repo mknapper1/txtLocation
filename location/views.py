@@ -63,12 +63,3 @@ def request_location(request):
     form = PhoneForm()
     return render(request, 'location/request_location.html', {'form': form})
 
-
-def api_request_location(request):
-    # if request.method == 'POST':
-            # request.data.get('NUMBER')
-            # new_location = Location.create(phone=cd['number'])
-            # new_location.request_location(request.get_host())
-            # return redirect('location:show', unique_link=new_location.unique_link)
-    form = PhoneForm()
-    return render(request, 'location/request_location.html', {'form': form})
